@@ -1,0 +1,10 @@
+
+catkin_ws/src/jetcam/
+catkin_ws/src/robot_vision/scripts/
+catkin_ws/src/vision_opencv/
+qingzhou_ws/src/navigation_msgs/
+qingzhou_ws/src/particle_filter/
+qingzhou_ws/src/qinzhou_odom/imu_calibrate/imu_calib/
+qingzhou_ws/src/qinzhou_odom/imu_tools/
+qingzhou_ws/src/range_libc/
+qingzhou_ws/src/teb_local_planner/
