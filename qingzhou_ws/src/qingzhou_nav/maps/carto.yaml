@@ -1,0 +1,6 @@
+image: /home/learningx/qingzhou_ws/src/qingzhou_nav/maps/carto.pgm
+resolution: 0.050000
+origin: [-2.807644, -7.247899, 0.0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

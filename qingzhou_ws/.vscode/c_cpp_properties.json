@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/opt/ros/melodic/include/**",
+                "${workspaceFolder}/src/qinzhou_odom/qingzhou_bringup/include/qingzhou_bringup",
+                "${workspaceFolder}/src/qinzhou_odom/robot_pose_ekf/include",
+                "/home/learningx/qingzhou_ws/src/reeds-shepp-paths/include",
+                "/home/learningx/qingzhou_ws/src/racecar/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-arm64",
+            "compilerArgs": []
+        }
+    ],
+    "version": 4
+}

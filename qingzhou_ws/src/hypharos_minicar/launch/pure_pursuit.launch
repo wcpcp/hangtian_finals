@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <node name="Pure_Pursuit" pkg="hypharos_minicar" type="Pure_Pursuit" output="screen">
+        <rosparam file="$(find hypharos_minicar)/launch/params/pure_pursuit/pure_pursuit_params.yaml" command="load" />
+        <remap from="/pure_pursuit/odom" to="/odom" />
+        <!-- <remap from="/pure_pursuit/global_planner" to="/move_base/GlobalPlanner/plan" /> -->
+        <remap from="/pure_pursuit/global_planner" to="/reference_path" />
+        <remap from="/pure_pursuit/goal" to="/move_base_simple/goal" />
+        <remap from="/pure_pursuit/ackermann_cmd" to="/ackermann_cmd" />
+        <remap from="/pure_pursuit/cmd_vel" to="/cmd_vel" />
+    </node>
+
+</launch>

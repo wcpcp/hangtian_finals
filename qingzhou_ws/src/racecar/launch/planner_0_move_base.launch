@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<launch>
+  <master auto="start"/>
+  <!-- move_base   中需要调用代价地图 -->
+  <!-- 定位的实现     amcl -->
+  <include file="$(find qingzhou_nav)/launch/map_and_amcl.launch" />
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base">
+        <remap from="/base_link" to="/base_footprint"/>
+
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <!-- <rosparam file="$(find racecar)/param2/global_planner_params.yaml" command="load"  /> -->
+        <param name="planner_frequency" value="0" />
+
+        <!-- <remap from="/odom" to="/odometry/filtered"/> -->
+
+
+        <rosparam file="$(find racecar)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find racecar)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+        <rosparam file="$(find racecar)/params/local_costmap_params.yaml" command="load"/>
+        <rosparam file="$(find racecar)/params/global_costmap_params.yaml" command="load"/> 
+
+
+    </node>
+  
+
+</launch>

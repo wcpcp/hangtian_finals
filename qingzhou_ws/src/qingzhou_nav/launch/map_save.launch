@@ -1,0 +1,4 @@
+<launch>
+    <arg name="filename" value="$(find qingzhou_nav)/maps/6jiao3" />
+    <node name="map_save" pkg="map_server" type="map_saver" args="-f $(arg filename)" />
+</launch>

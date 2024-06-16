@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="vision" name="sockconnect" type="sock.py" output="screen">
+    </node>
+</launch>

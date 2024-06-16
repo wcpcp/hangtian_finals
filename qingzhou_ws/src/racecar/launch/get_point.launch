@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="use_rviz" default="true" />
+    
+
+    <param name="/goal_loop/pub_goal_mode" value="1" />
+
+    <!-- 发布轨迹点 -->
+    <!-- <node name="track_publisher" pkg="racecar" type="track_publisher">      
+        <param name="waypoints_file" value="$(find racecar)/tracks/racecar.txt" />
+        <param name="scale" value="1" />
+        <param name="density" value="0.01" />
+    </node> -->
+
+
+    <!-- <node pkg="racecar" type="car_controller_new" respawn="false" name="car_controller" output="screen">       
+
+        <param name="Vcmd" value="1.5" /> 
+
+        <param name="baseSpeed" value="50"/> 
+        <param name="baseAngle" value="90.0"/> 
+        <param name="Angle_gain_p" value="-2.66"/>
+        <param name="Angle_gain_d" value="-11.4 "/>
+
+
+        <param name="Angle_gain_p_" value="-4.2"/>   
+        <param name="Angle_gain_d_" value="-20"/>
+
+        <param name="Lfw" value="0.882 "/> 
+        <param name="vp_max_base" value="110"/> 
+        <param name="vp_min" value="110"/> 
+        <param name="goalRadius" value="0.5"/> 
+
+        <param name="line_final_x" value="19.14532"/> 
+        <param name="line_final_y" value="-1.05435397"/> 
+        <param name="goalRadius" value="0.3"/> 
+        
+    </node> -->
+
+</launch>

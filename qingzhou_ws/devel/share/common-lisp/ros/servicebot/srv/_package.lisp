@@ -1,0 +1,10 @@
+(cl:defpackage servicebot-srv
+  (:use )
+  (:export
+   "COMMANDSERVICE"
+   "<COMMANDSERVICE-REQUEST>"
+   "COMMANDSERVICE-REQUEST"
+   "<COMMANDSERVICE-RESPONSE>"
+   "COMMANDSERVICE-RESPONSE"
+  ))
+

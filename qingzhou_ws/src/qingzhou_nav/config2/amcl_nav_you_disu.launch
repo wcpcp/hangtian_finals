@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="use_rviz" default="true" />
+    <node pkg="tf" type="static_transform_publisher" name="world_to_map" args="0.0 0.0 0.0 0.0 0 0  /world /map  20" />
+
+    <param name="/goal_loop/pub_goal_mode" value="0" />
+
+    <!-- for amcl -->    
+    <arg name="init_x" default="0.0" />
+    <arg name="init_y" default="0.0" />
+    <arg name="init_a" default="0.0" />
+
+    <!-- Map server -->
+    <node pkg="map_server" name="map_server" type="map_server" args="$(find racecar)/map/endyou.yaml">
+        <param name="frame_id" value="map" />
+        <param name="publish_frequency" value="1.0"/>
+    </node>
+
+    <!-- 发布轨迹点 -->
+    <node name="track_publisher" pkg="racecar" type="track_publisher">      
+        <param name="waypoints_file" value="$(find racecar)/tracks/racecar.txt" />
+        <param name="scale" value="1" />
+        <param name="density" value="0.01" />
+    </node>
+
+    <!-- Localization -->
+    <!-- AMCL -->
+    <include file="$(find racecar)/launch/includes/amcl.launch.xml">
+        <arg name="init_x" value="$(arg init_x)"/>
+        <arg name="init_y" value="$(arg init_y)"/>
+        <arg name="init_a" value="$(arg init_a)"/>
+    </include>
+
+    <!-- 发布终点目标点 -->
+    <node pkg="racecar" type="pub_goal_you" name="pub_goal" output="screen"/>
+
+
+
+
+    <!-- Navstack -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base">
+
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <!-- <rosparam file="$(find racecar)/param2/global_planner_params.yaml" command="load"  /> -->
+        <param name="planner_frequency" value="0" />
+
+        <remap from="/odom" to="/odometry/filtered"/>
+
+
+        <rosparam file="$(find racecar)/params1/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find racecar)/params1/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+        <rosparam file="$(find racecar)/params1/local_costmap_params.yaml" command="load"/>
+        <rosparam file="$(find racecar)/params1/global_costmap_params.yaml" command="load"/> 
+
+
+    </node>
+
+
+    <node pkg="racecar" type="car_controller_new_you" respawn="false" name="car_controller" output="screen">       
+
+        <param name="Vcmd" value="1.5" /> 
+        <!-- ESC --> 
+        <param name="baseSpeed" value="50"/> 
+        <param name="baseAngle" value="90.0"/> 
+        <param name="Angle_gain_p" value="-2.64"/>
+        <param name="Angle_gain_d" value="-11.4"/>
+
+        <!-- <param name="Lfw" value="0.93"/>  -->
+        <param name="Lfw" value="0.88"/> 
+        <param name="vp_max_base" value="120"/> 
+        <param name="vp_min" value="100"/> 
+        <param name="goalRadius" value="1.3"/> 
+
+        <param name="line_final_x" value="19.125598"/> 
+        <param name="line_final_y" value="2.1756"/> 
+        
+        
+    </node>
+
+
+    <!-- ODOMETRY -->
+    <!--rf2o_Laser_Odometry-->
+    <!-- <include file="$(find racecar)/launch/includes/rf2o.launch.xml" /> -->
+    <!-- wheel odometry -->
+    <include file="$(find encoder_driver)/launch/wheel_odom.launch"/>
+    <!-- Robot_Localization -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+        <rosparam command="load" file="$(find racecar)/param2/ekf_params.yaml" />
+    </node>
+
+</launch>

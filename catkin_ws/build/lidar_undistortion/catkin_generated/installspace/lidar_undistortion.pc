@@ -1,0 +1,8 @@
+prefix=/home/learningx/catkin_ws/install
+
+Name: lidar_undistortion
+Description: Description of lidar_undistortion
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

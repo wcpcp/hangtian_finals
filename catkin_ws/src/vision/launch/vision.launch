@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="vision" name="vision" type="final_vision.py" output="screen">
+    </node>
+</launch>

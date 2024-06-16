@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/install
+
+Name: move_base_msgs
+Description: Description of move_base_msgs
+Version: 1.13.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

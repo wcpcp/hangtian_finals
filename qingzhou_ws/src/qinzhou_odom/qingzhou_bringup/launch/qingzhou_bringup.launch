@@ -1,0 +1,12 @@
+<launch>
+  <!-- 运行底盘控制节点 发布odom话题 -->
+  <node pkg="qingzhou_bringup" type="qingzhou_bringup" name="qingzhou_bringup" output="screen" >
+    <rosparam file="$(find qingzhou_bringup)/config/robot_param.yaml" command="load" />
+    <!-- <remap from="/odom" to="/odom_raw"/> -->
+  </node>
+
+</launch>
+
+
+
+

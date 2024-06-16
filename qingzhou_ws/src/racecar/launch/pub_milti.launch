@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="use_rviz" default="true" />
+
+    <param name="/toward" value="1"/> 
+
+    <!-- 发布轨迹点 -->
+    <node name="track_publisher" pkg="racecar" type="track_publisher" respawn="false" output="screen">
+        <param name="waypoints_file0" value="$(find racecar)/path/path0.csv" />
+        <param name="waypoints_file1" value="$(find racecar)/path/path1.csv" />
+        <param name="waypoints_file2" value="$(find racecar)/path/path2.csv" />
+        <param name="waypoints_file3" value="$(find racecar)/path/path3.csv" />
+        <param name="waypoints_file4" value="$(find racecar)/path/path4.csv" />
+        <param name="waypoints_file5" value="$(find racecar)/path/path5.csv" />
+        <param name="waypoints_file6" value="$(find racecar)/path/path6.csv" />
+        <param name="waypoints_file7" value="$(find racecar)/path/path7.csv" />
+        <param name="waypoints_file8" value="$(find racecar)/path/path8.csv" />
+
+        <param name="scale" value="1" />
+        <param name="density" value="0.01" />
+    </node>
+
+
+
+</launch>

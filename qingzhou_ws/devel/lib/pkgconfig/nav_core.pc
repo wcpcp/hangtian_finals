@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: nav_core
+Description: Description of nav_core
+Version: 1.16.6
+Cflags: -I/home/learningx/qingzhou_ws/src/nav_core/include
+Libs: -L${prefix}/lib 
+Requires: std_msgs geometry_msgs tf2_ros costmap_2d

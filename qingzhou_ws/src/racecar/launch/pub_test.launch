@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- 发布轨迹点 -->
+    <node name="test_track" pkg="racecar" type="test_track" respawn="false">      
+        <param name="waypoints_file" value="$(find racecar)/path/path2.csv" />
+       
+
+        <param name="scale" value="1" />
+        <param name="density" value="0.01" />
+    </node>
+
+ 
+    
+
+
+
+</launch>

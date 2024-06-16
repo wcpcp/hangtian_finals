@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/install
+
+Name: hypharos_minicar
+Description: Description of hypharos_minicar
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

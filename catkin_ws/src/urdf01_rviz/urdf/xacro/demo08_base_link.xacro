@@ -1,0 +1,103 @@
+<!-- 根标签，必须声明 xmlns:xacro -->
+<robot name="qingzhou_car" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- 封装变量、常量 -->
+  <!-- PI 值设置精度需要高一些，否则后续车轮翻转量计算时，可能会出现肉眼不能察觉的车轮倾斜，从而导致模型抖动 -->
+  <xacro:property name="PI" value="3.1415926535897932384"/>
+  <!-- 宏:黑色设置 -->
+  <material name="black">
+      <color rgba="0.0 0.0 0.0 1.0" />
+  </material>
+  <!-- 底盘属性 -->
+  <xacro:property name="base_footprint_radius" value="0.001" /> <!-- base_footprint 半径  -->
+  <xacro:property name="base_link_x" value="0.5" /> <!-- base_link 长 -->
+  <xacro:property name="base_link_y" value="0.18" /> <!-- base_link 宽 -->
+  <xacro:property name="base_link_z" value="0.1" /> <!-- base_link 高 -->
+  <xacro:property name="earth_space" value="0.04" /> <!-- 离地间距 -->
+
+
+  <!-- 底盘 -->
+  <link name="base_footprint">
+    <visual>
+      <geometry>
+        <sphere radius="${base_footprint_radius}" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </visual>
+  </link>
+
+    <joint name="base_footprint2base_link" type="fixed">
+      <parent link="base_footprint" />
+      <child link="base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${base_link_x} ${base_link_y} ${base_link_z}" />
+      </geometry>
+      <origin xyz="0 0 ${earth_space+base_link_z/2}" rpy="0 0 0" />
+      <material name="yellow">
+        <color rgba="0.5 0.3 0.0 0.5" />
+      </material>
+    </visual>
+   </link>
+
+ <!-- 驱动轮 -->
+  <!-- 驱动轮属性 -->
+  <xacro:property name="wheel_radius" value="0.0575" /><!-- 半径 -->
+  <xacro:property name="wheel_length" value="0.055" /><!-- 宽度 -->
+
+  <!-- 驱动轮宏实现 -->
+  <xacro:macro name="add_wheels" params="name flag">
+    <link name="${name}_wheel">
+      <visual>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}" />
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy="${PI / 2} 0.0 0.0" />
+        <material name="black" />
+      </visual>
+    </link>
+
+    <joint name="${name}_wheel2base_link" type="continuous">
+      <parent link="base_link" />
+      <child link="${name}_wheel" />
+      <origin xyz="-0.155 ${flag*(0.19-0.055)} ${wheel_radius}" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+  </xacro:macro>
+  <xacro:add_wheels name="left" flag="1" />
+  <xacro:add_wheels name="right" flag="-1" />
+
+
+
+  <!-- 驱动轮宏实现 -->
+  <xacro:macro name="add_wheels" params="name flag">
+    <link name="${name}_wheel">
+      <visual>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}" />
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy="${PI / 2} 0.0 0.0" />
+        <material name="black" />
+      </visual>
+    </link>
+
+    <joint name="${name}_wheel2base_link" type="continuous">
+      <parent link="base_link" />
+      <child link="${name}_wheel" />
+      <origin xyz="0.14 ${flag*(0.19-0.055)} ${wheel_radius}" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+  </xacro:macro>
+  <xacro:add_wheels name="left_front" flag="1" />
+  <xacro:add_wheels name="right_front" flag="-1" />
+
+
+
+
+</robot>

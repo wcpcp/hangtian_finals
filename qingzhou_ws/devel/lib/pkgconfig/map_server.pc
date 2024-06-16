@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: map_server
+Description: Description of map_server
+Version: 1.16.6
+Cflags: -I/home/learningx/qingzhou_ws/src/map_server/include
+Libs: -L${prefix}/lib -lmap_server_image_loader
+Requires: roscpp nav_msgs tf2

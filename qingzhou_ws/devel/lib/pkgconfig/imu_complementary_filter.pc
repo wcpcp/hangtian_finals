@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: imu_complementary_filter
+Description: Description of imu_complementary_filter
+Version: 1.1.6
+Cflags: -I/home/learningx/qingzhou_ws/src/qinzhou_odom/imu_tools/imu_complementary_filter/include
+Libs: -L${prefix}/lib -lcomplementary_filter
+Requires: message_filters roscpp sensor_msgs std_msgs tf

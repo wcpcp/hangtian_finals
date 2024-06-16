@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/install
+
+Name: mrobot_calibration
+Description: Description of mrobot_calibration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

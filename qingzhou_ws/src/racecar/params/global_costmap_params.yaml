@@ -1,0 +1,38 @@
+global_costmap:
+    footprint: [[-0.305, -0.18], [-0.305, 0.18], [0.305, 0.18], [0.305, -0.18]]
+    footprint_padding: 0.12
+    transform_tolerance: 0.5
+    update_frequency: 20.0
+    publish_frequency: 20.0
+
+    global_frame: map
+    robot_base_frame: base_footprint
+    resolution: 0.10
+    # publish_frequency: 0.0
+    # obstacle_range: 3.0
+    # static_map: true
+
+    rolling_window: false
+    width: 30.0
+    height: 30.0
+    track_unknown_space: true
+
+    plugins: 
+        - {name: static,    type: "costmap_2d::StaticLayer"}            
+        - {name: sensor,    type: "costmap_2d::ObstacleLayer"}
+        - {name: inflation, type: "costmap_2d::InflationLayer"}
+
+    static:        
+        map_topic: /map 
+        subscribe_to_updates: true
+
+    sensor:
+        observation_sources: laser_scan_sensor
+        laser_scan_sensor: {sensor_frame: laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+
+    inflation:
+        inflation_radius: 0.6
+        cost_scaling_factor: 40.0
+
+
+

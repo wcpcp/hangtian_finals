@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/install
+
+Name: reeds_shepp_paths_ros
+Description: Description of reeds_shepp_paths_ros
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lreeds_shepp_paths_ros
+Requires: roscpp costmap_2d base_local_planner geometry_msgs nav_msgs tf

@@ -1,0 +1,44 @@
+<launch>
+
+    <!-- <arg name="h_lower" default="165"/>  
+    <arg name="s_lower" default="54"/>  
+    <arg name="v_lower" default="100"/> 
+
+    <arg name="h_upper" default="180"/>  
+    <arg name="s_upper" default="90"/>  
+    <arg name="v_upper" default="115"/>   -->
+    <!-- wanshang -->
+    <!-- <arg name="h_lower" default="174"/>   
+    <arg name="s_lower" default="39"/>  
+    <arg name="v_lower" default="95"/> 
+
+    <arg name="h_upper" default="180"/>  
+    <arg name="s_upper" default="110"/>  
+    <arg name="v_upper" default="114"/>   -->
+    <!-- baitian -->
+    <!-- <arg name="h_lower" default="35"/>  
+    <arg name="s_lower" default="43"/>  
+    <arg name="v_lower" default="46"/> 
+
+    <arg name="h_upper" default="80"/>  
+    <arg name="s_upper" default="255"/>  
+    <arg name="v_upper" default="255"/> -->
+    <!-- <arg name="test_mode" default="False"/>   node work in test mode or normal mode -->
+
+    <node pkg="vision" name="linefollow" type="line_detector.py" output="screen">
+        <!-- <remap from="cmd_vel" to="cmd_vel_line" /> -->
+        <!-- <param name="h_lower"            value="$(arg h_lower)"/>
+        <param name="s_lower"            value="$(arg s_lower)"/>
+        <param name="v_lower"            value="$(arg v_lower)"/>
+        <param name="h_upper"            value="$(arg h_upper)"/>
+        <param name="s_upper"            value="$(arg s_upper)"/>
+        <param name="v_upper"            value="$(arg v_upper)"/>
+        <param name="test_mode"            value="$(arg test_mode)"/> -->
+        
+    </node>
+    <!-- compressed image -->
+    <!-- <node name="republish_mask" pkg="image_transport" type="republish" args="raw in:=mask_image compressed out:=mask_image" />
+    <node name="republish_result" pkg="image_transport" type="republish" args="raw in:=result_image compressed out:=result_image" /> -->
+    
+
+</launch>

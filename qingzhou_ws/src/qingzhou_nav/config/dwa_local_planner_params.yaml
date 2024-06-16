@@ -1,0 +1,55 @@
+DWAPlannerROS:
+
+  max_vel_x: 0.8     #x方向最大线速度绝对值，单位:米/秒
+  min_vel_x:  0.65     #x方向最小线速度绝对值，负数代表可后退，单位:米/秒
+
+  max_vel_y: 0.0 #y方向最大线速度绝对值，单位:米/秒。差分驱动机器人为0    
+  min_vel_y: 0.0 #y方向最小线速度绝对值，单位:米/秒。差分驱动机器人为0   
+
+  max_vel_trans: 0.8 # 0.6    # 机器人最大平移速度的绝对值，单位为 m/s # choose slightly less than the base's capability
+  min_vel_trans: 0.05  #机器人最小平移速度的绝对值，单位为 m/s 不可为零  # this is the min trans velocity when there is negligible rotational velocity
+  trans_stopped_vel: 0.1 #机器人被认属于“停止”状态时的平移速度。如果机器人的速度低于该值，则认为机器人已停止。单位为 m/s
+
+  # Warning!
+  #   do not set min_trans_vel to 0.0 otherwise dwa will always think translational velocities
+  #   are non-negligible and small in place rotational velocities will be created.
+
+  max_vel_theta: 0.8  #  0.63  # 机器人的最大旋转角速度的绝对值，单位为 rad/s  # choose slightly less than the base's capability
+  min_vel_theta: 0.4  # 机器人的最小旋转角速度的绝对值，单位为 rad/s # this is the min angular velocity when there is negligible translational velocity
+  theta_stopped_vel: 0.1 # 机器人被认属于“停止”状态时的旋转速度。单位为 rad/s  
+  
+  acc_lim_x: 5.0  # 机器人在x方向的极限加速度，单位为 meters/sec^2 # maximum is theoretically 2.0, but we 
+  acc_lim_theta: 5.0  #机器人的极限旋转加速度，单位为 rad/sec^2 # 最大角加速度
+  acc_lim_y: 0.0      #  机器人在y方向的极限加速度，对于差分机器人来说当然是0  # diff drive robot
+  acc_lim_trans: 1.0 
+# Goal Tolerance Parameters 目标公差
+  yaw_goal_tolerance: 0.6  #  0.8 # 到到目标点时，控制器在x和y方向上的容差（tolerence）（米）。即：到达目标点时,在xy平面内与目标点的距离误差
+  xy_goal_tolerance: 0.3  # 0.10 #到达目标点时，控制器在偏航/旋转时的弧度容差(tolerance)。即：到达目标点时偏行角允许的误差，单位弧度
+  latch_xy_goal_tolerance: false
+
+# Forward Simulation Parameters
+  sim_time: 1.15     # 1.7 # 前向模拟轨迹的时间，单位为s(seconds) 
+  vx_samples: 3       # 3 # x方向速度空间的采样点数
+  vy_samples: 1       # y方向速度空间采样点数.。差分驱动机器人y方向永远只有1个值（0.0）# diff drive robot, there is only one sample
+  vtheta_samples: 20  # 20 # 旋转方向的速度空间采样点数
+
+# Trajectory Scoring Parameters
+  path_distance_bias: 35.0       # 32.0 #控制器与给定路径接近程度的权重  - weighting for how much it should stick to the global path plan
+  goal_distance_bias: 26.0     # 24.0     #控制器与局部目标点的接近程度的权重，也用于速度控制 - wighting for how much it should attempt to reach its goal
+  occdist_scale: 0.6              # 0.01   # 控制器躲避障碍物的程度- weighting for how much the controller should avoid obstacles
+  forward_point_distance: 0.2 # 0.325 #以机器人为中心，额外放置一个计分点的距离  - how far along to place an additional scoring point
+  stop_time_buffer: 0.2       # 0.2  #机器人在碰撞发生前必须拥有的最少时间量。该时间内所采用的轨迹仍视为有效。即：为防止碰撞,机器人必须提前停止的时间长度     - amount of time a robot must stop in before colliding for a valid traj.
+  scaling_speed: 0.25           # 0.25   #开始缩放机器人足迹时的速度的绝对值，单位为m/s。 - absolute velocity at which to start scaling the robot's footprint
+  max_scaling_factor: 0.2       # 0.2   #最大缩放因子。max_scaling_factor为上式的值的大小。 - how much to scale the robot's footprint when at speed.
+
+# Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.05  # 0.05   #机器人必须运动多少米远后才能复位震荡标记(机器人运动多远距离才会重置振荡标记)- how far to travel before resetting oscillation flags
+
+# Debugging
+  publish_traj_pc : true #将规划的轨迹在RVIZ上进行可视化
+  publish_cost_grid_pc: true #将代价值进行可视化显示
+  global_frame_id: odom #全局参考坐标系
+
+
+# Differential-drive robot configuration - necessary?
+#  holonomic_robot: false

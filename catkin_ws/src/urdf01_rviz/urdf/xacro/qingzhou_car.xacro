@@ -1,0 +1,8 @@
+<robot name="qingzhou_car" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- 底盘、摄像头、雷达的xacro文件包含 -->
+    <xacro:include filename="demo08_base_link.xacro" />
+    <xacro:include filename="demo09_laser.xacro" />
+    <xacro:include filename="demo10_imu.xacro" />
+    <xacro:include filename="demo11_camera_xacro" />
+</robot>

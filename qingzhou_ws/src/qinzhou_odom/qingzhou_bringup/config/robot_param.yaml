@@ -1,0 +1,3 @@
+# 里程计校正因子
+odom_linear_scale_correction: 1.0279152
+odom_angular_scale_correction: 1.0

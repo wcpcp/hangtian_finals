@@ -1,0 +1,39 @@
+<launch>
+
+  <!-- <param name="use_sim_time" value="true" /> -->
+
+  <!-- <arg name="rviz_display" default="true"/> -->
+
+  <node name="lidar_undistortion" pkg="lidar_undistortion"  type="lidar_undistortion" output="screen">
+
+    <param name="lidar_topic" value="scan"/>
+    <!-- Estimated time of lidar message transmission(ms) -->
+    <param name="lidar_msg_delay_time" value="5.0"/>
+
+    <param name="scan_direction_clockwise" value="true"/>
+
+    <param name="imu_topic" value="/imu_data"/>
+    <param name="imu_frequency" value="15.0"/>
+
+    <param name="output_frame_id" value="laser_frame"/>
+    <param name="pub_raw_scan_pointcloud" value="true"/>
+
+    <param name="pub_laserscan" value="true"/>
+    <param name="laserscan_angle_increment" value="0.004"/>
+
+    <param name="use_range_filter" value="true"/>
+    <param name="range_filter_min" value="0.4"/>
+    <param name="range_filter_max" value="5.0"/>
+
+    <param name="use_angle_filter" value="true"/>
+    <param name="angle_filter_min" value="-3.1415926"/>
+    <param name="angle_filter_max" value="3.1415926"/>
+
+    <param name="use_radius_outlier_filter" value="true"/>
+    <param name="radius_outlier_filter_search_radius" value="0.5"/><!--0.1 4-->
+    <param name="radius_outlier_filter_min_neighbors" value="10"/><!--2-->
+
+  </node>
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_frame"
+    args="0.09 0.01 0.12 0.0 0.0  0.0 /base_link /laser_frame 50" />
+</launch>

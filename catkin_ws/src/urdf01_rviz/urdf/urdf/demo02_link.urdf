@@ -1,0 +1,25 @@
+
+
+<robot name="mycar">
+    <link name="base_link">
+   
+        <visual>
+
+            <geometry>
+
+                <mesh filename="package://urdf01_rviz/meshes/autolabor_mini.stl"/>
+            
+            </geometry>
+            
+
+            <origin xyz="3 2 0" rpy="1.57 0 0"/>
+            
+
+            <material name="car_color">
+                <color rgba="0 0 1 1"/>
+            </material>
+
+        </visual>
+
+    </link>
+</robot>

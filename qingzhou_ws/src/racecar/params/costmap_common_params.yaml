@@ -1,0 +1,46 @@
+#map_type: voxel
+map_type: costmap
+footprint_inflation: 0.025 # 机器人膨胀层
+# footprint: [[0.325,0.225],[0.325,-0.225],[-0.325,-0.225],[-0.325,0.225]]
+always_send_full_costmap: true #true
+# recovery_behavior_enabled: true
+# transform_tolerance: 1.0
+# controller_frequency: 5
+# publish_frequency: 0.0
+# 障碍物层的参数配置
+obstacle_layer:
+  enabled: true  # 使能障碍物层；
+  combination_method:   1
+  track_unknown_space:  true
+  # unknown_cost_value: 0
+  # unknown_threshold: 8
+  # mark_threshold: 0
+  # publish_voxel_map: false
+
+  obstacle_range: 4.0 #插入代价地图的障碍物应距离机器人的最大默认距离，以米为单位。它可以在每个传感器的基础上进行覆盖操作。
+
+  raytrace_range: 8.0 # 清除障碍物范围；
+  # footprint: [[-0.3,-0.4],[-0.3,1.03],[-0.0,1.03],[0.3, 1.03],[0.3,-0.4]]
+  inflation_radius:  0.2 #0.32
+  inf_is_valid: true
+  # max_obstacle_height: 0.40
+  # min_obstacle_height: 0.02
+  # controller_frequency: 10  #5
+  observation_sources: scan # 数据源；
+  #point_cloud_sensor
+
+  scan: {sensor_frame: laser_link, data_type: LaserScan, topic: /scan, 
+  marking: true,clearing: true}  # 0.05
+
+# inflation_layer:
+#  enabled:              true
+#  cost_scaling_factor:  5.0  # exponential rate at which the obstacle cost drops off (default: 10)
+#  inflation_radius:     0.250  #0.32 # max. distance from an obstacle at which costs are incurred for planning paths.
+# 静态层参数配置
+static_layer:
+ enabled: true
+ map_topic:            "map"
+
+
+
+

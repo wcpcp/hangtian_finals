@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: ding_makepath
+Description: Description of ding_makepath
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: voxel_grid
+Description: Description of voxel_grid
+Version: 1.16.6
+Cflags: -I/home/learningx/qingzhou_ws/src/voxel_grid/include
+Libs: -L${prefix}/lib -lvoxel_grid
+Requires: roscpp

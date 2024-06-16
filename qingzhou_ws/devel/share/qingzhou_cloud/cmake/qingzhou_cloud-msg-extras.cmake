@@ -1,0 +1,2 @@
+set(qingzhou_cloud_MESSAGE_FILES "/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/qingzhou_cloud.msg;/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/startstopCommand.msg;/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/stoppoint.msg;/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/trafficlight.msg;/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/roadLine.msg;/home/learningx/qingzhou_ws/src/qingzhou_cloud/msg/current_location.msg")
+set(qingzhou_cloud_SERVICE_FILES "")

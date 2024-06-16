@@ -1,0 +1,21 @@
+<launch>
+
+<param name="/use_sim_time" value="false"/>
+
+<node pkg="pure_pursuit" type="pure_pursuit_node" name="pure_pursuit_node" output="screen">
+    <param name="distancia_lookahead" value="0.3" />
+    <param name="vel_angular_max" value="0.1" />
+    <param name="tolerancia_posicion" value="0.1" />
+    <!-- <param name="path_topic" value="/move_base/SBPLLatticePlanner/plan" /> -->
+    <!-- <param name="path_topic" value="/move_base/GlobalPlanner/plan" /> -->
+    <param name="path_topic" value="/reference_path" />
+    <param name="odom_topic" value="/odom" />
+    <param name="cmdVel_topic" value="/cmd_vel" />
+    <param name="map_frameid" value="map" />
+    <param name="robot_frameid" value="back_wheel_center" />
+    <param name="lookahead_frameid" value="lookahead" />
+</node>
+
+<!-- <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" /> -->
+
+</launch>

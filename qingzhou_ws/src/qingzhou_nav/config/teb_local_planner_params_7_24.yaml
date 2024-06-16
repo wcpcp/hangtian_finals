@@ -1,0 +1,142 @@
+#四十秒
+#第一个目标点很直，但是弯道不行
+TebLocalPlannerROS:
+
+  odom_topic: odom
+    
+  # Trajectory
+
+  teb_autosize: True
+  dt_ref: 0.3
+  dt_hysteresis: 0.03
+  max_samples: 100
+  global_plan_overwrite_orientation: True
+  allow_init_with_backwards_motion: False
+  max_global_plan_lookahead_dist: 1.5
+  global_plan_viapoint_sep: 0.3
+  global_plan_prune_distance: 1
+  exact_arc_length: False
+  feasibility_check_no_poses: 5
+  publish_feedback: False
+    
+  # Robot
+          
+  max_vel_x: 1.1
+  max_vel_x_backwards: 0.4
+  max_vel_y: 0.0
+  max_vel_theta: 1.2    #弯道1.0
+  acc_lim_x: 1
+  acc_lim_theta: 0.4   #弯道2.0
+  min_turning_radius: 0.7 # diff-drive robot (can turn on place!)
+  wheelbase: 0.3
+  # cmd_angle_instead_rotvel: true
+  # type: "polygon"   #多边形类型for akm/mec，默认”point”。
+  # vertices: [[0.46,0.2],[0.48,0],[0.46,-0.2],[-0.02, -0.2],[-0.02,0.2]] #多边形端点坐标 for mini_mec
+
+  footprint_model:
+    type: "circular"
+    radius: 0.25
+
+  # GoalTolerance
+    
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerance: 0.6
+  free_goal_vel: true
+  complete_global_plan: True
+    
+  # Obstacles
+    
+  #  min_obstacle_dist: 0 # This value must also include our robot radius, since footprint_model is set to "point".
+  #  inflation_dist: 0.2
+  #  include_costmap_obstacles: True
+  #  costmap_obstacles_behind_robot_dist: 1.5
+  #  obstacle_poses_affected: 15
+
+  #  dynamic_obstacle_inflation_dist: 0.6
+  #  include_dynamic_obstacles: True
+
+
+  # Obstacles
+  min_obstacle_dist: 0.3 #0.18和障碍物最小距离
+  include_costmap_obstacles: true #是否将动态障碍物预测为速度模型，
+  costmap_obstacles_behind_robot_dist: 0.5 #1.5 限制机器人后方规划时考虑的局部成本地图障碍物
+  obstacle_poses_affected: 10   #障碍物姿态受影响0~30
+  include_dynamic_obstacles: true  #true 
+  dynamic_obstacle_inflation_dist: 0.4 # 0.1 0.6
+  inflation_dist: 0.5 # 障碍物周围缓冲区
+
+# ht_obstacle）都将以此因子重复缩放（weight_new = weight_old * factor）。迭代地增加权重而不是设置较大的先验值会导致底层优化问题的更好的数值条件。
+  # no_inner_iterations: 5 #5
+  # no_outer_iterations: 4 #4
+  # optimization_activate: True #Jihuo youhua
+  # optimization_verbose: False #dayin youhua xiangqing
+  # penalty_epsilon: 1
+  # obstacle_cost_exponent: 4
+  # weight_max_vel_x: 5 #5
+  # weight_max_vel_theta: 1 #1
+  # weight_acc_lim_x: 2 #1
+  # weight_acc_lim_theta: 1
+  # # weight_kinematics_nh: 100  #1000
+  # weight_kinematics_forward_drive: 100 #500
+  # weight_kinematics_turning_radius: 1 #1
+  # weight_optimaltime: 10  #2.5 20 must be > 0   #大了速度快
+  # weight_shortest_path: 1 #1
+  # weight_obstacle: 200 #200
+  # weight_inflation: 200
+  # weight_dynamic_obstacle: 200 # not in use yet
+  # weight_dynamic_obstacle_inflation: 200.0
+  # weight_viapoint: 0
+  # weight_adapt_factor: 2.0
+
+  no_inner_iterations: 5 #5
+  no_outer_iterations: 4 #4
+  optimization_activate: True #Jihuo youhua
+  optimization_verbose: False #dayin youhua xiangqing
+  penalty_epsilon: 0.5
+  obstacle_cost_exponent: 4
+  weight_max_vel_x: 5 #5
+  weight_max_vel_theta: 1 #1
+  weight_acc_lim_x: 2 #1
+  weight_acc_lim_theta: 1
+  weight_kinematics_nh: 100  #1000
+  weight_kinematics_forward_drive: 10 #500
+  weight_kinematics_turning_radius: 1 #1
+  weight_optimaltime: 50  #2.5 20 must be > 0
+  weight_shortest_path: 1 #1
+  weight_obstacle: 200 #200
+  weight_inflation: 10
+  weight_dynamic_obstacle: 200 # not in use yet
+  weight_dynamic_obstacle_inflation: 10
+  weight_viapoint: 5
+  weight_adapt_factor: 2.0
+  obstacle_cost_exponent: 4
+
+  # Homotopy Class Planner
+
+  enable_homotopy_class_planning: False
+  enable_multithreading: false
+  max_number_classes: 4
+  selection_cost_hysteresis: 1.0
+  selection_prefer_initial_plan: 0.9
+  selection_obst_cost_scale: 100.0
+  selection_alternative_time_cost: False
+  roadmap_graph_no_samples: 15
+  roadmap_graph_area_width: 5
+  roadmap_graph_area_length_scale: 1.0
+  h_signature_prescaler: 0.5
+  h_signature_threshold: 0.1
+  obstacle_heading_threshold: 0.45
+  switching_blocking_period: 0.0
+  viapoints_all_candidates: True
+  delete_detours_backwards: True
+  max_ratio_detours_duration_best_duration: 3.0
+  visualize_hc_graph: False
+  visualize_with_time_as_z_axis_scale: False
+  # Recovery
+  shrink_horizon_backup: True
+  shrink_horizon_min_duration: 10
+  oscillation_recovery: True #FALSE
+  oscillation_v_eps: 0.1
+  oscillation_omega_eps: 0.1
+  oscillation_recovery_min_duration: 10
+  oscillation_filter_duration: 10

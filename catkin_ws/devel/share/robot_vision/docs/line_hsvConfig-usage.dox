@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="robot_vision" pkg="robot_vision" type="robot_vision">
+  <param name="h_lower" type="int" value="0" />
+  <param name="s_lower" type="int" value="0" />
+  <param name="v_lower" type="int" value="0" />
+  <param name="h_upper" type="int" value="255" />
+  <param name="s_upper" type="int" value="255" />
+  <param name="v_upper" type="int" value="255" />
+</node>
+\endverbatim
+

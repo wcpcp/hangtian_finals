@@ -1,0 +1,8 @@
+prefix=/home/learningx/catkin_ws/install
+
+Name: robot_vision
+Description: Description of robot_vision
+Version: 1.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

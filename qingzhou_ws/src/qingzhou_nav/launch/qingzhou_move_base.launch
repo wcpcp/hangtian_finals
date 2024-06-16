@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<launch>
+  <master auto="start"/>
+
+   <include file="$(find qingzhou_nav)/launch/test_amcl.launch" />
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <remap from="base_link" to="base_footprint" />
+
+    <!-- now ypx -->
+	  <remap from="odom" to="odom_data" />
+	  <!-- <remap from="odom" to="odom_rf2o" /> -->
+
+
+
+    <!-- <remap from="/move_base/GlobalPlanner/plan" to="/reference_path" /> -->
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+    <param name="planner_frequency" value="5.0" />
+    <param name="planner_patience" value="5.0" />
+
+    <!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
+    <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" /> -->
+    <!-- <param name="controller_frequency" value="5.0" /> -->
+    <!-- <param name="controller_patience" value="5.0" /> -->
+
+    <rosparam file="$(find qingzhou_nav)/config2/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find qingzhou_nav)/config2/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find qingzhou_nav)/config2/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find qingzhou_nav)/config2/global_costmap_params.yaml" command="load" />
+    <!-- <rosparam file="$(find qingzhou_nav)/config/dwa_local_planner_params.yaml" command="load" /> -->
+
+    <!-- <rosparam file="$(find qingzhou_nav)/config/teb_local_planner_params.yaml" command="load" /> -->
+    <!-- <rosparam file="$(find qingzhou_nav)/config/costmap_converter_params.yaml" command="load" /> -->
+    
+    <rosparam file="$(find qingzhou_nav)/config/global_planner_params.yaml" command="load" />
+
+
+	  <remap from="/move_base/GlobalPlanner/plan" to="/path2" />
+	  <remap from="/cmd_vel" to="/cmd_nono" />
+    
+  </node>
+
+</launch>

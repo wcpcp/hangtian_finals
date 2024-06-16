@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/learningx/qingzhou_ws/devel/lib/libpure_pursuit_lib.a  CMakeFiles/pure_pursuit_lib.dir/src/PurePursuit.cpp.o CMakeFiles/pure_pursuit_lib.dir/src/main.cpp.o
+/usr/bin/ranlib /home/learningx/qingzhou_ws/devel/lib/libpure_pursuit_lib.a

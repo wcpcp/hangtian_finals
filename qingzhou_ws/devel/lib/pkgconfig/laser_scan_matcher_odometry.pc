@@ -1,0 +1,8 @@
+prefix=/home/learningx/qingzhou_ws/devel
+
+Name: laser_scan_matcher_odometry
+Description: Description of laser_scan_matcher_odometry
+Version: 0.0.0
+Cflags: -I/home/learningx/qingzhou_ws/src/laser_scan_matcher_odometry-master/include
+Libs: -L${prefix}/lib -llaser_scan_matcher_odometry
+Requires: roscpp nodelet sensor_msgs tf pcl_ros pcl_conversions geometry_msgs nav_msgs
